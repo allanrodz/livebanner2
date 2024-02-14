@@ -1,0 +1,43 @@
+/* style.css */
+.carousel {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-items div {
+    display: none;
+    text-align: center;
+}
+
+button.prev, button.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: black; /* Default background color for both buttons */
+}
+
+button.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    background-color: #FFBF00; /* Amber color for the 'next' button */
+}
+
+button.prev {
+    left: 0;
+    /* Black color for the 'prev' button is already set by the default style */
+}
+
+button:hover {
+    background-color: rgba(0,0,0,0.8); /* Adjust as needed for hover effect */
+}
