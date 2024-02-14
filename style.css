@@ -1,74 +1,163 @@
-/* style.css */
-.carousel {
-    position: relative;
-    max-width: 100%; /* Adjusts width to be responsive */
-    margin: auto;
-    overflow: hidden;
-}
 
-.carousel-items div {
-    display: none;
-    text-align: center;
-    padding: 10px; /* Adds some padding */
-}
-
-button.prev, button.next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 1vw; /* Use viewport width for scalable padding */
+.btn1 {
+    width: 200px; /* Set the desired width */
+    height: 50px; /* Set the desired height */
+    margin: 0 auto 20px; /* Center the button and add margin at the bottom */
+    display: block; /* Ensure it's block level for margin auto to work */
     color: white;
     font-weight: bold;
-    font-size: calc(10px + 1vw); /* Responsive font size */
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    background-color: black; /* Default background color for both buttons */
+    border-radius: 25px; /* Adjust the border radius to control roundness */
+    background-color: #4CAF50; /* Red background color */
+    text-align: center; /* Center the text horizontally */
+    line-height: 50px; /* Center the text vertically within the button */
 }
 
-button.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-    background-color: #FFBF00; /* Amber color for the 'next' button */
+
+.timer-green {
+    background-color: #4CAF50; /* Green */
 }
 
-button.prev {
+.timer-yellow {
+    background-color: #ffad3b; /* Amber*/
+}
+
+.timer-red {
+    background-color: #F44336; /* Red */
+}
+
+@keyframes blink {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+.timer-blink {
+    animation: blink 1s linear infinite;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'sans-serif';
+    box-sizing: border-box;
+}
+
+body{
+    background: #ffffff;
+}
+
+.app{
+    background: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto 0;
+    border-radius: 10px;
+    padding: 0px;
+    border: 0px solid #ffffff;
+}
+
+.app h1{
+    color:#001e4d;
+    font-weight: 600;
+    border-bottom: 1px solid #333;
+    padding-bottom: 30px;
+}
+
+.quiz, #game-over{
+    padding: 20px 0;
+}
+
+.quiz h2, #game-over h2{
+    font-size: 18px;
+    color: #001e4d;
+    font-weight: 600;
+}
+
+.btn{
+    background: #fda21a;
+    color: #fefefe;
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid #222;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn:hover:not([disabled]){
+    background: #00838F;
+    color: #fff;
+}
+
+.btn:disabled{
+    cursor: no-drop;
+}
+
+#next-btn, #game-over button{
+    background: #00838F;
+    color: #fff;
+    font-weight: 500;
+    width: 150px;
+    border: 0px;
+    padding: 10px;
+    margin: 20px auto;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+}
+
+.quiz .btn.correct {
+    background-color: green;
+    color: white;
+}
+
+.quiz .btn.incorrect {
+    background-color: red;
+    color: white;
+}
+
+
+/* Overlay styles */
+#leaderboard-overlay {
+    position: fixed;
+    top: 0;
     left: 0;
-    /* Black color for the 'prev' button is already set by the default style */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* Darker overlay for better focus */
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* High z-index to ensure it's above everything else */
 }
 
-button:hover {
-    background-color: rgba(0,0,0,0.8); /* Adjust as needed for hover effect */
+.leaderboard {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 80%; /* Responsive width */
+    max-width: 500px; /* Max width to ensure it doesn't get too large */
+    position: relative; /* For positioning close button or additional styling */
 }
 
-/* Adjustments within media queries for smaller screens */
-
-@media (max-width: 768px) {
-    button.prev, button.next {
-        font-size: calc(12px + 2vw); /* Adjust font size */
-        padding: 1.5vw; /* Slightly larger padding */
-        margin-top: -20px; /* Adjust vertical positioning to avoid covering text */
-    }
-
-    .carousel-items div {
-        padding: 20px 30px; /* Add more padding around the text */
-    }
+.leaderboard table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-@media (max-width: 480px) {
-    button.prev, button.next {
-        font-size: calc(14px + 3vw); /* Larger font size for readability */
-        padding: 2vw; /* Increase padding */
-        margin-top: -15px; /* Adjust button position to be less intrusive */
-    }
-
-    .carousel-items div {
-        padding: 20px 40px; /* Increase padding to provide more space for text */
-    }
-
-
-   
+.leaderboard th, .leaderboard td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #dee2e6;
 }
 
+.leaderboard th {
+    background-color: #007bff;
+    color: white;
+}
