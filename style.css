@@ -1,7 +1,7 @@
 /* style.css */
 .carousel {
     position: relative;
-    max-width: 600px;
+    max-width: 100%; /* Adjusts width to be responsive */
     margin: auto;
     overflow: hidden;
 }
@@ -9,6 +9,7 @@
 .carousel-items div {
     display: none;
     text-align: center;
+    padding: 10px; /* Adds some padding */
 }
 
 button.prev, button.next {
@@ -17,10 +18,10 @@ button.prev, button.next {
     top: 50%;
     width: auto;
     margin-top: -22px;
-    padding: 16px;
+    padding: 1vw; /* Use viewport width for scalable padding */
     color: white;
     font-weight: bold;
-    font-size: 18px;
+    font-size: calc(10px + 1vw); /* Responsive font size */
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
@@ -40,4 +41,24 @@ button.prev {
 
 button:hover {
     background-color: rgba(0,0,0,0.8); /* Adjust as needed for hover effect */
+}
+
+/* Media queries for further responsiveness */
+@media (max-width: 768px) {
+    button.prev, button.next {
+        font-size: calc(12px + 2vw); /* Increase font size slightly for smaller screens */
+        padding: 2vw; /* Increase padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-items div {
+        padding: 5px; /* Reduces padding for very small screens */
+    }
+    
+    button.prev, button.next {
+        margin-top: -15px; /* Adjust button position for smaller screens */
+        padding: 4vw; /* Increase padding */
+        font-size: calc(14px + 3vw); /* Further increase font size for better readability */
+    }
 }
