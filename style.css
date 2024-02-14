@@ -43,22 +43,29 @@ button:hover {
     background-color: rgba(0,0,0,0.8); /* Adjust as needed for hover effect */
 }
 
-/* Media queries for further responsiveness */
+/* Adjustments within media queries for smaller screens */
+
 @media (max-width: 768px) {
     button.prev, button.next {
-        font-size: calc(12px + 2vw); /* Increase font size slightly for smaller screens */
-        padding: 2vw; /* Increase padding */
+        font-size: calc(12px + 2vw); /* Adjust font size */
+        padding: 1.5vw; /* Slightly larger padding */
+        margin-top: -20px; /* Adjust vertical positioning to avoid covering text */
+    }
+
+    .carousel-items div {
+        padding: 20px 30px; /* Add more padding around the text */
     }
 }
 
 @media (max-width: 480px) {
-    .carousel-items div {
-        padding: 5px; /* Reduces padding for very small screens */
-    }
-    
     button.prev, button.next {
-        margin-top: -15px; /* Adjust button position for smaller screens */
-        padding: 4vw; /* Increase padding */
-        font-size: calc(14px + 3vw); /* Further increase font size for better readability */
+        font-size: calc(14px + 3vw); /* Larger font size for readability */
+        padding: 2vw; /* Increase padding */
+        margin-top: -15px; /* Adjust button position to be less intrusive */
+    }
+
+    .carousel-items div {
+        padding: 20px 40px; /* Increase padding to provide more space for text */
     }
 }
+
