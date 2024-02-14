@@ -44,30 +44,34 @@
 </head>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggleButton = document.getElementById('togglePlayer');
-        const playerContainer = document.getElementById('playerContainer');
-        let playerActive = true;
-    
-        toggleButton.addEventListener('click', function() {
-            if (playerActive) {
-                // Stop and remove the iframe
-                playerContainer.innerHTML = '';
-                playerActive = false;
-            } else {
-                // Re-create and append the iframe
-                const iframe = document.createElement('iframe');
-                iframe.setAttribute('src', 'https://tunein.com/embed/player/s80564/');
-                iframe.style.width = '100%';
-                iframe.style.height = '100%';
-                iframe.frameBorder = 'no';
-                iframe.scrolling = 'no';
-                iframe.allowFullscreen = true;
-                playerContainer.appendChild(iframe);
-                playerActive = true;
-            }
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.getElementById('togglePlayer');
+    const icon = toggleButton.querySelector('i'); // Select the icon within the button
+    const playerContainer = document.getElementById('playerContainer');
+    let playerActive = true;
+
+    toggleButton.addEventListener('click', function() {
+        if (playerActive) {
+            // Stop and remove the iframe
+            playerContainer.innerHTML = '';
+            toggleButton.innerHTML = '<i class="fas fa-power-off" style="color: green;"></i> Turn ON Radio'; // Update button text and icon color to green
+            playerActive = false;
+        } else {
+            // Re-create and append the iframe
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('src', 'https://tunein.com/embed/player/s80564/');
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.frameBorder = 'no';
+            iframe.scrolling = 'no';
+            iframe.allowFullscreen = true;
+            playerContainer.appendChild(iframe);
+            toggleButton.innerHTML = '<i class="fas fa-power-off" style="color: red;"></i> Turn OFF Radio'; // Update button text back and icon color to red
+            playerActive = true;
+        }
     });
+});
+
     
     </script>
 <body>
@@ -76,7 +80,7 @@
 <div id="playerContainer" style="width: 100%; height: 100px; overflow: hidden;">
     <iframe id="musicPlayer" style="width: 100%; height: 100%;" src="https://tunein.com/embed/player/s80564/" frameborder="no" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
 </div>
-<button id="togglePlayer"><i class="fas fa-power-off" style="color: red;"></i> Turn OFF Radio</button>
+<button id="togglePlayer"><i class="fas fa-power-off"></i> Turn OFF Radio</button>
 
 <p style="text-align: center;"><strong><span style="color: #e67e23;">KCLR On Air Schedule</span></strong></p>
 
