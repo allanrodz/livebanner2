@@ -78,6 +78,33 @@ document.addEventListener('DOMContentLoaded', function() {
         ]
     };
 
+    function getCurrentShow() {
+        const now = new Date();
+        const dayOfWeek = now.toLocaleString('en-us', {weekday: 'long'});
+        const currentTime = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+    
+        const todaysSchedule = schedule[dayOfWeek];
+        let currentShow = "Show information not available";
+    
+        for (let i = 0; i < todaysSchedule.length; i++) {
+            const show = todaysSchedule[i];
+            if (currentTime >= show.start && (i === todaysSchedule.length - 1 || currentTime < todaysSchedule[i + 1].start)) {
+                currentShow = show.show;
+                break;
+            }
+        }
+    
+        return currentShow;
+    }
+    
+    function updateBanner() {
+        const textSpan = document.getElementById('now-playing-text');
+        textSpan.textContent = "Now Playing: " + getCurrentShow();
+    }
+    
+    updateBanner();
+    setInterval(updateBanner, 60000);
+
     const carouselContainer = document.querySelector('.carousel-items');
     Object.keys(schedule).forEach(day => {
         const dayDiv = document.createElement('div');
@@ -103,4 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
         currentIndex = (currentIndex + move + items.length) % items.length;
         items[currentIndex].style.display = 'block';
     }
+
+    
 });
