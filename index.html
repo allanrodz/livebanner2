@@ -37,6 +37,15 @@
             white-space: nowrap;
             animation: marquee 10s linear infinite;
         }
+        @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    .pulse {
+        animation: pulse 10s infinite;
+    }
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -75,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     </script>
 <body>
+<p><img class="pulse" style="width: 100%; height: 400px; object-fit: cover;" src="https://i.ibb.co/7kXGVTc/Whats-App-Image-2024-02-15-at-18-42-36-5907f190.jpg" /></p>
 <div id="now-playing-banner"><span id="now-playing-text">Now Playing: Loading...</span></div>
 
 <div id="playerContainer" style="width: 100%; height: 100px; overflow: hidden;">
